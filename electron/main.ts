@@ -1,7 +1,6 @@
 import { app, BrowserWindow, shell } from "electron";
 import path from "node:path";
-
-import nodeChildProcess from "child_process";
+import fs from "node:fs";
 import { ipcMain } from "electron";
 
 // The built directory structure
@@ -51,29 +50,15 @@ app.on("window-all-closed", () => {
 });
 
 ipcMain.handle("runWindowsScript", () => {
-  // shell.openExternal("file:/switchgit/src/scripts/test.bat");
-  // shell.showItemInFolder("file:/E:/switchgit/src/scripts/test.bat");
   shell.openExternal("file:/E:/switchgit/src/scripts/test.bat");
-  // shell.beep();
-
-  // let script = nodeChildProcess.spawn("cmd.exe", [
-  //   "/c",
-  //   "test.bat",
-  //   "arg1",
-  //   "arg2",
-  // ]);
-  // // MacOS & Linux
-  // // let script = nodeChildProcess.spawn('bash', ['test.sh', 'arg1', 'arg2']);
-  // console.log("PID: " + script.pid);
-  // script.stdout.on("data", (data) => {
-  //   console.log("stdout: " + data);
-  // });
-  // script.stderr.on("data", (err) => {
-  //   console.log("stderr: " + err);
-  // });
-  // script.on("exit", (code) => {
-  //   console.log("Exit Code: " + code);
-  // });
 });
+
+ipcMain.handle("runLinuxScript", () => {
+  shell.openExternal("file:/E:/switchgit/src/scripts/test.sh");
+});
+
+// ipcMain.handle("writeJSON", () => {
+//   fs.writeFileSync;
+// });
 
 app.whenReady().then(createWindow);

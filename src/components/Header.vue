@@ -14,11 +14,14 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  background: $green-light;
-  padding: 18px;
+  background: $base-bg;
+  padding: 15px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
   &__title {
+    color: $white;
     font-size: 26px;
-    font-weight: 800;
+    font-weight: bold;
   }
 }
 </style>
